@@ -1,0 +1,56 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Next.js: Server",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/node_modules/next/dist/bin/next",
+            "args": [
+                "dev"
+            ],
+            "runtimeArgs": [
+                "--inspect"
+            ],
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "sourceMaps": true,
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "name": "Next.js: Client",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}",
+            "breakOnLoad": true
+        },
+        {
+            "name": "Next.js: Client(Edge)",
+            "type": "msedge",
+            "request": "launch",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}",
+            "breakOnLoad": true
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Next.js: (Chrome)Full Stack",
+            "configurations": [
+                "Next.js: Server",
+                "Next.js: Client"
+            ]
+        },
+        {
+            "name": "Next.js: (Edge)Full Stack",
+            "configurations": [
+                "Next.js: Server",
+                "Next.js: Client(Edge)"
+            ]
+        }
+    ]
+  }
+  

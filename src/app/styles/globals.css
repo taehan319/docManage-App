@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/***********************************************
+*   ↓↓↓ ここからカスタマイズスタイル↓↓↓           *
+************************************************/
+/* 全体共通のスタイルを定義します */
+/* システムタイトルのスタイル */
+.titleBox {
+  text-align: center;
+  margin-top: 5%;
+  font-weight: 700;
+}
+.titleBox .titleName {
+  font-size: 2.5rem;
+}
+.titleBox p.version {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-top: 0.5rem;
+}
+.titleBox img.version {
+  height: 2.8rem;
+  object-fit: contain;
+  margin: -1.0rem auto;
+}
+
+/* カスタムトースト用 */
+.custom-toast-content {
+  color: white;
+}
+.custom-toast-content h4 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+.custom-toast-content p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* マスクのスタイル */
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+/* スピナー */
+.dual-ring-spinner {
+  width: 4rem; /* w-16 (16 * 0.25rem = 4rem) */
+  height: 4rem; /* h-16 (16 * 0.25rem = 4rem) */
+  border-radius: 9999px; /* rounded-full */
+  border: 4px solid transparent; /* border-4 */
+  border-top-color: #38bdf8; /* border-t-sky-400 - 色はSky-400の色を使用 */
+  border-right-color: transparent; /* border-r-transparent */
+  border-bottom-color: #38bdf8; /* border-b-sky-400 - 色はSky-400の色を使用 */
+  border-left-color: transparent; /* border-l-transparent */
+  animation: spin 1s linear infinite; /* animate-spin */
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* ・・・三連 */
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* gap-4 (4 * 0.25rem = 1rem) */
+}
+.dot-container {
+  display: flex;
+  gap: 0.5rem; /* gap-2 (2 * 0.25rem = 0.5rem) */
+}
+.dot {
+  width: 0.75rem; /* w-3 (3 * 0.25rem = 0.75rem) */
+  height: 0.75rem; /* h-3 (3 * 0.25rem = 0.75rem) */
+  background-color: #38bdf8; /* border-t-sky-400 - 色はSky-400の色を使用 */
+  border-radius: 9999px; /* rounded-full */
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; /* animate-pulse */
+}
+.dot:nth-child(2) {
+  animation-delay: 150ms; /* delay-150 */
+}
+.dot:nth-child(3) {
+  animation-delay: 300ms; /* delay-300 */
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+/* モダンスピナー */
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* gap-4 (4 * 0.25rem = 1rem) */
+}
+.spinner-svg {
+  height: 2.5rem; /* h-10 (10 * 0.25rem = 2.5rem) */
+  width: 2.5rem; /* w-10 (10 * 0.25rem = 2.5rem) */
+  color: #38bdf8; /* border-t-sky-400 - 色はSky-400の色を使用 */
+  animation: spin 1s linear infinite;
+}
+.spinner-circle {
+  opacity: 0.25; /* opacity-25 */
+}
+.spinner-path {
+  opacity: 0.75; /* opacity-75 */
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* tailwndcssのカスタマイズスタイル
+* ※優先順位　base < components < utilities
+* ※共通スタイルの定義を行ったクラスの適用も可能
+*/
+/* HTML全体のデフォルトスタイルを定義 */
+@layer base {
+  /* h1はテキストサイズを3倍、太字にする */
+  h1 {
+    @apply text-3xl font-bold;
+  }
+}
+/* 再利用可能な UI コンポーネントのスタイルを定義 */
+@layer components {
+
+}
+/* 汎用的な CSS クラスを定義 */
+@layer utilities {
+
+}
